@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - MoneyWise</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="DIV-SUPERIOR">
+        <a href="{{ url_for('home') }}" class="logo-link">
+            <div class="logo-container">
+                <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="Logo MoneyWise" class="logo">
+                <h1 class="logo-text">MONEYWISE</h1>
+            </div>
+        </a>
+    </header>
+    
+    <div class="auth-container">
+        <div class="auth-box">
+            <h2>Entrar no MoneyWise</h2>
+
+            <!-- Mensagem de erro -->
+            <div id="erro-mensagem" style="color: red; display: none; margin-bottom: 10px;"></div>
+
+            <form id="login-form">
+                <input type="email" id="email" placeholder="E-mail" required>
+                <input type="password" id="password" placeholder="Senha" required>
+                <button type="submit" class="btn login-btn">Entrar</button>
+            </form>
+
+            <p>Não tem uma conta? <a href="{{ url_for('register_page') }}">Cadastre-se</a></p>
+        </div>
+    </div>
+
+    <!-- Script com defer para garantir que os elementos existam ao carregar -->
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</body>
+</html>

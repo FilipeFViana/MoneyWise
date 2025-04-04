@@ -1,0 +1,336 @@
+@font-face {
+    font-family: 'ProtestStrike';
+    src: url('assets/fonts/ProtestStrike-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+/* Barra superior */
+.DIV-SUPERIOR {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #27AE60; /* Verde forte */
+    padding: 15px 30px;
+    height: 60px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+/* Logo e nome */
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.logo-text {
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* Botões de Login e Registro */
+.menu {
+    display: flex;
+    justify-content: flex-end; /* Alinha os botões para a direita */
+    align-items: center; /* Mantém alinhado verticalmente */
+    gap: 10px; /* Espaçamento entre os botões */
+    width: 100%; /* Faz a div ocupar toda a largura do header */
+    padding-right: 20px; /* Adiciona um espaçamento da borda direita */
+}
+
+
+.btn {
+    background-color: #16A085; /* Verde azulado */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.btn.register {
+    background-color: #1ABC9C; /* Verde mais claro para destacar */
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+.help-button {
+    cursor: pointer;
+    margin-left: 15px;
+}
+
+.help-icon {
+    width: 30px; 
+    height: 30px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.help-icon:hover {
+    transform: scale(1.1); /* Efeito ao passar o mouse */
+}
+
+
+/* Ajuste da Div Central */
+.DIV-CENTRAL {
+    position: fixed; /* Mantém o fundo fixo na tela */
+    top: 60px; /* Começa logo abaixo do cabeçalho */
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 60px); /* Ocupa toda a tela abaixo do cabeçalho */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url("assets/background.webp") no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Criar camada semi-transparente */
+.DIV-CENTRAL::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75); /* Opacidade de 75% */
+    z-index: -1;
+}
+
+/* Ajuste do Texto */
+.texto-container {
+    font-family: 'ProtestStrike', sans-serif;
+    text-transform: uppercase; /* Mantém o estilo do texto em maiúsculas */
+    font-size: 2rem; /* Ajuste conforme necessário */
+    position: absolute;
+    letter-spacing: 2px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centraliza no meio da tela */
+    text-align: center;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.5); /* Fundo escuro translúcido */
+    padding: 20px 40px;
+    border-radius: 10px;
+}
+
+
+/* Estilização do Texto */
+.texto-container h2 {
+    font-size: 36px;
+    color: white;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+
+
+/* Cores para destaque */
+.destaque.azul {
+    color: #5DADE2;
+}
+
+.destaque.verde {
+    color: #27AE60;
+}
+
+.destaque.amarelo {
+    color: #F1C40F;
+}
+
+
+/* Centralizar formulários */
+.login-container, .register-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 100px auto;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilização dos Inputs */
+input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Botões */
+.btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.login-btn {
+    background-color: #27AE60; /* Verde MoneyWise */
+    color: white;
+}
+
+.register-btn {
+    background-color: #1ABC9C; /* Verde mais claro */
+    color: white;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+/* Link para alternar entre Login e Registro */
+p {
+    margin-top: 10px;
+}
+
+p a {
+    color: #27AE60;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+/* Background das telas de Login e Registro */
+.auth-container {
+    position: fixed;
+    top: 60px; /* Começa logo abaixo do cabeçalho */
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 60px); /* Ocupa toda a tela abaixo da barra superior */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url("assets/background.webp") no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Camada de opacidade */
+.auth-container::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75); /* Opacidade de 75% */
+    z-index: -1;
+}
+
+/* Estilização do formulário */
+.auth-box {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+/* Inputs do formulário */
+.auth-box input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Botões */
+.auth-box .btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.auth-box .login-btn {
+    background-color: #27AE60; /* Verde MoneyWise */
+    color: white;
+}
+
+.auth-box .register-btn {
+    background-color: #1ABC9C; /* Verde mais claro */
+    color: white;
+}
+
+.auth-box .btn:hover {
+    opacity: 0.8;
+}
+
+/* Link para alternar entre Login e Registro */
+.auth-box p {
+    margin-top: 10px;
+}
+
+.auth-box p a {
+    color: #27AE60;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.auth-box p a:hover {
+    text-decoration: underline;
+}
+
+/* Faz com que a logo seja um botão clicável */
+.logo-link {
+    text-decoration: none; /* Remove o sublinhado do link */
+}
+
+.logo-link:hover {
+    opacity: 0.8; /* Efeito ao passar o mouse */
+}
+
+
+
+/*DASHBOARD*/
+
+body {
+    font-family: Arial, sans-serif;
+    padding: 30px;
+    text-align: center;
+  }
+
+  .welcome {
+    font-size: 24px;
+    margin-top: 40px;
+    color: #2D9C4E;
+  }
+
+  .logout-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .logout-btn:hover {
+    background-color: #c0392b;
+  }

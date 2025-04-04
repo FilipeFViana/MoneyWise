@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoneyWise</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="DIV-SUPERIOR">
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="Logo MoneyWise" class="logo">
+            <h1 class="logo-text">MONEYWISE</h1>
+        </div>
+
+        <div class="menu">
+            <a href="{{ url_for('login_page') }}"><button class="btn login">ENTRAR</button></a>
+            <a href="{{ url_for('register_page') }}"><button class="btn register">REGISTRAR-SE</button></a>
+            <div class="help-button">
+                <img src="{{ url_for('static', filename='assets/help-icon.png') }}" alt="Ajuda" class="help-icon">
+            </div>
+        </div>
+    </header>
+
+    <div class="DIV-CENTRAL">
+        <div class="texto-container">
+            <h2><span>MAIS</span> <span class="destaque azul">ORGANIZAÇÃO</span>,</h2>
+            <h2><span>MAIS</span> <span class="destaque verde">ECONOMIA</span>,</h2>
+            <h2><span>MAIS</span> <span class="destaque amarelo">LIBERDADE</span>!</h2>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</body>
+</html>

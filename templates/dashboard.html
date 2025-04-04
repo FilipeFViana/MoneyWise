@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard - MoneyWise</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <h1 class="welcome" id="bem-vindo">Carregando painel...</h1>
+
+  <button class="logout-btn" onclick="logout()">Sair</button>
+
+  <script>
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Você precisa estar logado.");
+      window.location.href = "/login-page";
+    } else {
+      fetch("/dashboard-data", {
+        method: "GET",
+        headers: {
+          "Authorization": "Bearer " + token
+        }
+      })
+      .then(response => {
+        if (!response.ok) throw new Error("Token inválido ou expirado");
+        return response.json();
+      })
+      .then(data => {
+        // Mostra a mensagem retornada pela API, exemplo: "Bem-vindo ao seu painel, email!"
+        document.getElementById("bem-vindo").innerText = data.mensagem;
+      })
+      .catch(err => {
+        alert(err.message);
+        localStorage.removeItem("token");
+        window.location.href = "/login-page";
+      });
+    }
+
+    function logout() {
+      localStorage.removeItem("token");
+      alert("Você saiu da sua conta.");
+      window.location.href = "/login-page";
+    }
+  </script>
+</body>
+</html>
+    

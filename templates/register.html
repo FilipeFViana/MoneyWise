@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - MoneyWise</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="DIV-SUPERIOR">
+        <a href="{{ url_for('home') }}" class="logo-link">
+            <div class="logo-container">
+                <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="Logo MoneyWise" class="logo">
+                <h1 class="logo-text">MONEYWISE</h1>
+            </div>
+        </a>   
+    </header>
+
+    <div class="auth-container">
+        <div class="auth-box">
+            <h2>Crie sua conta</h2>
+
+            <!-- Erros -->
+            <div id="erro-mensagem" style="color: red; display: none; margin-bottom: 10px;"></div>
+
+            <form id="register-form">
+                <input type="text" id="name" placeholder="Nome completo" required>
+                <input type="text" id="cpf" placeholder="CPF (apenas números)" required>
+                <input type="email" id="email" placeholder="E-mail" required>
+                <input type="password" id="password" placeholder="Senha" required>
+                <button type="submit" class="btn register-btn">Cadastrar</button>
+            </form>
+
+            <p>Já tem uma conta? <a href="{{ url_for('login_page') }}">Faça login</a></p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</body>
+</html>
