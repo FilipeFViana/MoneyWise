@@ -5,10 +5,58 @@
   <title>Dashboard - MoneyWise</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body>
-  <h1 class="welcome" id="bem-vindo">Carregando painel...</h1>
+<body class="dashboard-body">
+  <!-- Header fixo -->
+  <header class="DIV-SUPERIOR">
+    <a href="{{ url_for('routes.dashboard_page') }}" class="logo-container">
+      <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="Logo MoneyWise" class="logo">
+      <h1 class="logo-text">MONEYWISE</h1>
+    </a>
+    <div class="menu">
+      <a href="{{ url_for('routes.profile_page') }}">
+        <img src="{{ url_for('static', filename='assets/user.png') }}" alt="Perfil" class="menu-icon">
+      </a>
+      <a href="#">
+        <img src="{{ url_for('static', filename='assets/bars.png') }}" alt="Menu" class="menu-icon">
+      </a>
+    </div>
+  </header>
 
-  <button class="logout-btn" onclick="logout()">Sair</button>
+  <!-- Conteúdo principal -->
+  <main class="dashboard-container">
+    <section class="dashboard-section" id="bolsa-section">
+      <h2>BOLSA DE VALORES</h2>
+      <table id="tabela-bolsa">
+        <thead>
+          <tr>
+            <th>Ativo</th>
+            <th>Preço Atual</th>
+            <th>Variação</th>
+          </tr>
+        </thead>
+        <tbody id="tabela-corpo">
+          <tr><td colspan="3">Carregando dados...</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="dashboard-section" id="noticias-section">
+      <h2>NOTÍCIAS DO MERCADO</h2>
+      <p>Carregando notícias...</p>
+    </section>
+
+    <section class="dashboard-section" id="economia-section">
+      <h2>% DE DINHEIRO ECONOMIZADO NO MÊS</h2>
+      <p>--%</p>
+    </section>
+  </main>
+
+  <!-- Rodapé fixo -->
+  <footer class="dashboard-footer">
+    <a href="#"><img src="{{ url_for('static', filename='assets/history.png') }}" alt="Histórico"></a>
+    <a href="#"><img src="{{ url_for('static', filename='assets/category.png') }}" alt="Nova ação"></a>
+    <a href="#"><img src="{{ url_for('static', filename='assets/settings.png') }}" alt="Configurações"></a>
+  </footer>
 
   <script>
     const token = localStorage.getItem("token");
@@ -28,11 +76,35 @@
         return response.json();
       })
       .then(data => {
-        // Mostra a mensagem retornada pela API, exemplo: "Bem-vindo ao seu painel, email!"
-        document.getElementById("bem-vindo").innerText = data.mensagem;
+        const corpoTabela = document.getElementById("tabela-corpo");
+        corpoTabela.innerHTML = "";
+
+        const ativos = data.ativos || [];
+        if (ativos.length === 0) {
+          corpoTabela.innerHTML = "<tr><td colspan='3'>Nenhum dado disponível</td></tr>";
+        }
+
+        ativos.forEach(ativo => {
+          const linha = document.createElement("tr");
+
+          const nome = document.createElement("td");
+          nome.textContent = ativo.simbolo;
+
+          const preco = document.createElement("td");
+          preco.textContent = `R$ ${ativo.preco}`;
+
+          const variacao = document.createElement("td");
+          variacao.textContent = `${ativo.variacao}%`;
+
+          linha.appendChild(nome);
+          linha.appendChild(preco);
+          linha.appendChild(variacao);
+
+          corpoTabela.appendChild(linha);
+        });
       })
       .catch(err => {
-        alert(err.message);
+        alert("Erro ao carregar dados: " + err.message);
         localStorage.removeItem("token");
         window.location.href = "/login-page";
       });
@@ -46,4 +118,3 @@
   </script>
 </body>
 </html>
-    

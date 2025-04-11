@@ -14,11 +14,11 @@
         </div>
 
         <div class="menu">
-            <a href="{{ url_for('login_page') }}"><button class="btn login">ENTRAR</button></a>
-            <a href="{{ url_for('register_page') }}"><button class="btn register">REGISTRAR-SE</button></a>
-            <div class="help-button">
+            <a href="{{ url_for('routes.login_page') }}"><button class="btn login">ENTRAR</button></a>
+            <a href="{{ url_for('routes.register_page') }}"><button class="btn register">REGISTRAR-SE</button></a>
+                <!--  <div class="help-button">
                 <img src="{{ url_for('static', filename='assets/help-icon.png') }}" alt="Ajuda" class="help-icon">
-            </div>
+                </div> <!-->
         </div>
     </header>
 

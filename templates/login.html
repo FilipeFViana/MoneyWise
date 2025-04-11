@@ -8,7 +8,7 @@
 </head>
 <body>
     <header class="DIV-SUPERIOR">
-        <a href="{{ url_for('home') }}" class="logo-link">
+        <a href="{{ url_for('routes.home') }}" class="logo-link">
             <div class="logo-container">
                 <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="Logo MoneyWise" class="logo">
                 <h1 class="logo-text">MONEYWISE</h1>
@@ -29,7 +29,7 @@
                 <button type="submit" class="btn login-btn">Entrar</button>
             </form>
 
-            <p>Não tem uma conta? <a href="{{ url_for('register_page') }}">Cadastre-se</a></p>
+            <p>Não tem uma conta? <a href="{{ url_for('routes.register_page') }}">Cadastre-se</a></p>
         </div>
     </div>
 

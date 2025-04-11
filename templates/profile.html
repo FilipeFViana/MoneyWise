@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Perfil - MoneyWise</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="DIV-SUPERIOR">
+        <a href="/dashboard" class="logo-link">
+          <div class="logo-container">
+            <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="Logo MoneyWise" class="logo">
+            <h1 class="logo-text">MONEYWISE</h1>
+          </div>
+        </a>
+        <div class="menu">
+          <a href="/dashboard"><img src="{{ url_for('static', filename='assets/bars.png') }}" alt="Menu" style="height: 30px;"></a>
+        </div>
+      </header>
+      
+
+  <main class="perfil-container">
+    <div class="perfil-box">
+      <h2>Informações do Usuário</h2>
+      <p><strong>Nome:</strong> <span id="perfil-nome">Carregando...</span></p>
+      <p><strong>Email:</strong> <span id="perfil-email">Carregando...</span></p>
+      <p><strong>CPF:</strong> <span id="perfil-cpf">Carregando...</span></p>
+    </div>
+  </main>
+
+  <script>
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Você precisa estar logado.");
+      window.location.href = "/login-page";
+    } else {
+      fetch("/perfil-dados", {
+        method: "GET",
+        headers: {
+          "Authorization": "Bearer " + token
+        }
+      })
+      .then(res => {
+        if (!res.ok) throw new Error("Erro ao buscar os dados do usuário");
+        return res.json();
+      })
+      .then(data => {
+        document.getElementById("perfil-nome").innerText = data.nome;
+        document.getElementById("perfil-email").innerText = data.email;
+        document.getElementById("perfil-cpf").innerText = data.cpf;
+      })
+      .catch(err => {
+        alert(err.message);
+        window.location.href = "/login-page";
+      });
+    }
+  </script>
+</body>
+</html>
